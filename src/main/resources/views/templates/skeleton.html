@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<head th:fragment="head(title)">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <base th:href="@{/}">
+
+    <link rel="shortcut icon" th:href="@{/assets/images/logo-ct.png}" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap-icons.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/datatables.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/computerhuis.css}"/>
+
+    <script type="text/javascript" th:src="@{/assets/js/jquery-3.7.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/datatable/datatables.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/bootstrap-initialization.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/datatable-initialization.js}"></script>
+
+    <title th:text="${title} + ' | Werkgroep Computerhuis Oost'"></title>
+</head>
+
+<header th:fragment="header">
+</header>
+
+<footer th:fragment="footer" class="mt-auto container-fluid p-0 d-print-none">
+    <div class="container text-center pb-3 mt-2">
+        &copy; 2024, Werkgroep Computerhuis Oost
+    </div>
+</footer>
+
+
+</body>
+</html>

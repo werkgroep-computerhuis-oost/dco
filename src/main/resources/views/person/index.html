@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Persoon', 'person')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Persoon</li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="${id}"></li>
+</ol>
+
+<div th:fragment="content" th:object="${personView}">
+    <form>
+        <h1>Persoongegevens</h1>
+        <hr/>
+        <div class="row">
+            <label class="col-4 col-form-label" for="id">Identificatie nummer</label>
+            <div class="col-8">
+                <input class="form-control" id="id" disabled th:value="*{person.id}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="registered">Inschrijf datum</label>
+            <div class="col-8">
+                <input class="form-control" id="registered" disabled type="datetime-local"
+                       th:value="*{person.registered}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="initials">Voorletters</label>
+            <div class="col-8">
+                <input class="form-control" id="initials" th:field="*{person.initials}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="firstname">Voornaam</label>
+            <div class="col-8">
+                <input class="form-control" id="firstname" th:field="*{person.firstName}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="infix">Tussenvoegsels</label>
+            <div class="col-8">
+                <input class="form-control" id="infix" th:field="*{person.infix}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="lastname">Achternaam</label>
+            <div class="col-8">
+                <input class="form-control" id="lastname" th:field="*{person.lastName}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="date_of_birth">Geboortedatum</label>
+            <div class="col-6">
+                <input class="form-control" type="date" id="date_of_birth" th:field="*{person.dateOfBirthAsISO}">
+            </div>
+            <label class="col-1 col-form-label text-end" for="age">Leeftijd</label>
+            <div class="col-1">
+                <input class="form-control" id="age" disabled th:value="*{person.age}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="unregistered">Uitgeschreven datum</label>
+            <div class="col-8">
+                <input class="form-control" id="unregistered" type="datetime-local"
+                       th:field="*{person.unregistered}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="telephone">Telefoon</label>
+            <div class="col-8">
+                <input class="form-control" id="telephone" th:field="*{person.telephone}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="mobile">Mobile</label>
+            <div class="col-8">
+                <input class="form-control" id="mobile" th:field="*{person.mobile}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="email">Email</label>
+            <div class="col-8">
+                <input class="form-control" id="email" th:field="*{person.email}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="street">Straat</label>
+            <div class="col-8">
+                <input class="form-control" id="street" th:field="*{person.street}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="house_number">Huisnummer</label>
+            <div class="col-8">
+                <input class="form-control" type="number" id="house_number" th:field="*{person.houseNumber}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="house_number_addition">Huisnummer toevoeging</label>
+            <div class="col-8">
+                <input class="form-control" id="house_number_addition" th:field="*{person.houseNumberAddition}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="postal_code">Postcode</label>
+            <div class="col-8">
+                <input class="form-control" id="postal_code" th:field="*{person.postalCode}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="city">Woonplaats</label>
+            <div class="col-8">
+                <input class="form-control" id="city" th:field="*{person.city}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="comments">Opmerking</label>
+            <div class="col-8">
+                <textarea class="form-control" id="comments" rows="6" th:field="*{person.comments}"></textarea>
+            </div>
+        </div>
+        <div class="row mt-5 mb-3">
+            <div class="col-6 text-center">
+                <button type="reset" class="btn btn-outline-primary">Beginwaarden</button>
+            </div>
+            <div class="col-6 text-center">
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

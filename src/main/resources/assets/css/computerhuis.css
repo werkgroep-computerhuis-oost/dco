@@ -1,0 +1,127 @@
+* {
+    font-family: "RO Sans", sans-serif;
+}
+
+@font-face {
+    font-family: "RO Sans";
+    font-weight: normal;
+    font-style: normal;
+    src: url("fonts/RO-SansWebText-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "RO Sans";
+    font-weight: normal;
+    font-style: italic;
+    src: url("fonts/RO-SansWebText-Italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "RO Sans";
+    font-weight: bold;
+    font-style: normal;
+    src: url("fonts/RO-SansWebText-Bold.woff2") format("woff2");
+}
+
+.img-lifeline {
+    display: block;
+    width: 100%;
+}
+
+.navigation {
+    font-size: 1.6rem;
+    background-color: #bfdaee;
+    border-top: 0.3rem solid #fff;
+    border-bottom: 0.2rem solid;
+    border-bottom-color: rgba(9, 82, 140, 0.5);
+    transition: transform ease 200ms, box-shadow ease 200ms, height ease 200ms, top ease 200ms;
+    transform: translateY(0);
+}
+
+footer {
+    border-top: rgba(9, 82, 140, 0.5) 1px solid;
+}
+
+footer ul {
+    padding-top: 1rem;
+    padding-left: 0;
+    list-style: none;
+    width: 100%;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+footer ul li.end {
+    text-align: right;
+    float: right;
+}
+
+/* --[ square border ]----------------------------------------------------------------------------------------------- */
+.one_pixel {
+    width: 1px;
+}
+
+.pixel_25_p {
+    width: 25%;
+}
+
+.no_text_break {
+    white-space: nowrap;
+}
+
+/* --[ square border ]----------------------------------------------------------------------------------------------- */
+.form-select,
+.form-control,
+.form-check-input[type=checkbox],
+.nav-pills .nav-link,
+.btn {
+    border-radius: 0;
+}
+
+/* --[ primary color ]----------------------------------------------------------------------------------------------- */
+a,
+.link-primary,
+.btn-outline-primary,
+.btn-link,
+.form-check-input:checked,
+.nav-link,
+.page-link,
+.page-link.active {
+    color: #01689b;
+}
+
+.bg-primary,
+.btn-primary,
+.btn-outline-primary:hover,
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link,
+.form-check-input:checked,
+.page-link.active,
+.dropdown-item.active,
+.active > .page-link, .page-link.active {
+    background-color: #01689b !important;
+}
+
+.btn-outline-primary {
+    border-color: #01689b;
+}
+
+.btn-primary,
+.btn-outline-primary:hover {
+    border-color: #000000;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link,
+.active > .page-link {
+    color: #FFFFFF;
+}
+
+/* --[ success color ]----------------------------------------------------------------------------------------------- */
+.btn-outline-success {
+    color: #39870c;
+    border-color: #39870c;
+}

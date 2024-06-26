@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Postcode','postal')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Postcode</li>
+    <li class="breadcrumb-item active" aria-current="page">Overzicht</li>
+</ol>
+
+<div th:fragment="content">
+    <table id="postal-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th>Postcode</th>
+            <th>Huisnummer</th>
+            <th>Straat</th>
+            <th>Buurt</th>
+            <th>Wijk</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/postal/all.js}"></script>
+</div>
+
+</body>
+</html>

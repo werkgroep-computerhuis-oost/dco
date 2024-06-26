@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Ticket','ticket')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Ticket</li>
+    <li class="breadcrumb-item active" aria-current="page">Overzicht</li>
+</ol>
+
+<div th:fragment="content">
+    <table id="ticket-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th>Categorie</th>
+            <th>Status</th>
+            <th>Apparatuur</th>
+            <th>Binnnekomst datum</th>
+            <th>Teruggave datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/ticket/all.js}"></script>
+</div>
+
+</body>
+</html>

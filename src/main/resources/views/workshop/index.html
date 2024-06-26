@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Werkplaats', 'workshop')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Werkplaats</li>
+    <li class="breadcrumb-item active" aria-current="page">Overzicht</li>
+</ol>
+
+<div th:fragment="content">
+    <div class="row">
+        <div class="col-12 p-2">
+            <h1>Ticket Overzicht</h1>
+            <p>Klik op de ticket die je wilt inzien of maak een andere keuze</p>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary">Invoeren Giften</a>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary">Gekregen Computers</a>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary">Voorraad computers</a>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary">Overzicht Uitgiftbewijs</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 d-grid gap-2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchPerson">
+                Zoek Persoon
+            </button>
+        </div>
+        <div class="col-6 d-grid gap-2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchComputer">
+                Zoek Computer
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 p-3">
+            <table id="dashboard-table" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Behandelaar</th>
+                    <th>Apparatuur</th>
+                    <th>Status</th>
+                    <th>Inname</th>
+                    <th>Categorie</th>
+                    <th>Merk/Type</th>
+                    <th>Taak</th>
+                    <th>Contact</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div th:replace="~{/workshop/person :: search}"></div>
+    <div th:replace="~{/workshop/computer :: search}"></div>
+
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/stdlib.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/workshop/dashboard.js}"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Ticket', 'ticket')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Ticket</li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="${id}"></li>
+</ol>
+
+<div th:fragment="content" th:object="${ticketView}">
+    <form>
+        <h1>Ticket</h1>
+        <hr/>
+        <div class="row">
+            <label class="col-3 col-form-label" for="nr">Ticket:</label>
+            <div class="col-9">
+                <input class="form-control" id="nr" disabled th:value="*{ticket.id}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-3 col-form-label">Apparatuur:</label>
+            <div class="col-9">
+                <a th:href="@{'/apparatuur/'+*{ticket.equipmentId}}" th:text="*{ticket.equipmentId}"></a>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-3 col-form-label" for="inschrijf_datum">Datum inschrijving:</label>
+            <div class="col-9">
+                <input class="form-control" id="inschrijf_datum" disabled type="datetime-local"
+                       th:value="*{ticket.registered}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-3 col-form-label" for="type">Type:</label>
+            <div class="col-9">
+                <select id="type" class="form-select" th:field="*{ticket.ticketType}">
+                    <option
+                        th:each="ticketType : ${T(com.github.computerhuis.dco.enumeration.TicketType).values()}"
+                        th:text="${ticketType.getLabel()}"
+                        th:value="${ticketType}">
+                </select>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-3 col-form-label" for="inschrijf_datum">Uitschrijf inschrijving:</label>
+            <div class="col-9">
+                <input class="form-control" id="unregistered" disabled type="datetime-local"
+                       th:value="*{ticket.unregistered}">
+            </div>
+        </div>
+
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-3 col-form-label" for="description">Omschrijving:</label>
+            <div class="col-9">
+                <textarea class="form-control" id="description"
+                          rows="6" th:field="*{ticket.description}"></textarea>
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-3">
+            <div class="col-6 text-center">
+                <button type="reset" class="btn btn-outline-primary">Reset</button>
+            </div>
+            <div class="col-6 text-center">
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+            </div>
+        </div>
+    </form>
+
+    <hr/>
+    <div class="row mt-1">
+        <label class="col-3 col-form-label" for="status">Status:</label>
+        <div class="col-9">
+            <table class="table table-striped" id="status">
+                <thead>
+                <tr>
+                    <th scope="col" class="pixel_25_p">Datum</th>
+                    <th scope="col" class="pixel_25_p">Door</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="status: *{statusList}">
+                    <td class="no_text_break" th:text="${#temporals.format(status.date)}"></td>
+                    <td class="no_text_break">
+                        <a th:href="@{'/persoon/'+${status.volunteerId}}" th:text="${status.fullname}"></a>
+                    </td>
+                    <td th:text="${status.status.getLabel()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr/>
+    <div class="row mt-1">
+        <label class="col-3 col-form-label" for="log">Log:</label>
+        <div class="col-9">
+            <table class="table table-striped" id="log">
+                <thead>
+                <tr>
+                    <th scope="col" class="pixel_25_p">Datum</th>
+                    <th scope="col" class="pixel_25_p">Door</th>
+                    <th scope="col">Log</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="log: *{logList}">
+                    <td class="no_text_break" th:text="${#temporals.format(log.date)}"></td>
+                    <td class="no_text_break">
+                        <a th:href="@{'/persoon/'+${log.volunteerId}}" th:text="${log.fullname}"></a>
+                    </td>
+                    <td th:text="${log.log}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

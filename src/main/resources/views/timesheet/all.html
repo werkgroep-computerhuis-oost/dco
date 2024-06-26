@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Tijdregistratie','timesheet')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Tijdregistratie</li>
+    <li class="breadcrumb-item active" aria-current="page">Overzicht</li>
+</ol>
+
+<div th:fragment="content">
+    <table id="timesheet-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th>Persoon</th>
+            <th>Activiteit</th>
+            <th>Inschrijf datum</th>
+            <th>Uitschrijf datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/timesheet/all.js}"></script>
+</div>
+
+</body>
+</html>

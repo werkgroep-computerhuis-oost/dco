@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<body>
+
+<nav th:fragment="navbar(page)" class="navbar navbar-expand-lg bg-light d-print-none">
+
+    <div class="container">
+        <div class="navbar-brand">
+            <a th:href="@{/}">
+                <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='workshop' ? 'active': null}"
+                       th:href="@{/werkplaats}">Werkplaats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='education' ? 'active': null}"
+                       th:href="@{/educatie}">Educatie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='counter' ? 'active': null}"
+                       th:href="@{/balie}">Balie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='equipment' ? 'active': null}"
+                       th:href="@{/apparatuur}">Apparatuur</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='person' ? 'active': null}"
+                       th:href="@{/persoon}">Persoon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='postal' ? 'active': null}"
+                       th:href="@{/postcode}">Postcode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='ticket' ? 'active': null}"
+                       th:href="@{/ticket}">Ticket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='timesheet' ? 'active': null}"
+                       th:href="@{/tijdregistratie}">Tijdregistratie</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='reporting' ? 'active': null}"
+                       th:href="@{/beheer/rapportage}">Rapportage</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='settings' ? 'active': null}"
+                       th:href="@{/beheer/instellingen}">Instellingen</a>
+                </li>
+            </ul>
+
+            <form class="hidden" id="logoutform" method="post" th:action="@{/uitloggen}">
+                <button class="ms-2 btn btn-outline-danger" type="submit">
+                    Uitloggen
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

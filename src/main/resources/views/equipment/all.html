@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Apparatuur','equipment')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Apparatuur</li>
+    <li class="breadcrumb-item active" aria-current="page">Overzicht</li>
+</ol>
+
+<div th:fragment="content">
+    <table id="equipment-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Desktop</th>
+            <th>Fabrikant</th>
+            <th>Model</th>
+            <th>Inschrijf datum</th>
+            <th>Uitgeschreven datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/equipment/all.js}"></script>
+</div>
+
+</body>
+</html>

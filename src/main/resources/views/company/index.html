@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="~{/templates/skeleton-theme :: page(#{menu.company}, 'company')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.company}"></li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="${id}"></li>
+</ol>
+
+<div th:fragment="content" th:object="${companyView}">
+    <form>
+        <h1 th:text="#{company.title}"></h1>
+        <hr/>
+        <div class="row">
+            <label class="col-4 col-form-label" for="id" th:text="#{generic.id}"></label>
+            <div class="col-8">
+                <input class="form-control" id="id" disabled th:value="*{company.id}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="registered" th:text="#{generic.registered}"></label>
+            <div class="col-8">
+                <input class="form-control" id="registered" type="datetime-local" disabled
+                       th:value="*{company.registered}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="name" th:text="#{generic.name}"></label>
+            <div class="col-8">
+                <input class="form-control" id="name" th:field="*{company.name}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="kvk_number" th:text="#{generic.kvk_number}"></label>
+            <div class="col-8">
+                <input class="form-control" id="kvk_number" th:field="*{company.kvkNumber}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="btw_nummer" th:text="#{generic.btw_number}"></label>
+            <div class="col-8">
+                <input class="form-control" id="btw_nummer" th:field="*{company.btwNumber}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="unregistered" th:text="#{generic.unregistered}"></label>
+            <div class="col-8">
+                <input class="form-control" id="unregistered" type="datetime-local"
+                       th:field="*{company.unregistered}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="telephone" th:text="#{generic.telephone}"></label>
+            <div class="col-8">
+                <input class="form-control" id="telephone" th:field="*{company.telephone}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="email" th:text="#{generic.email}"></label>
+            <div class="col-8">
+                <input class="form-control" id="email" th:field="*{company.email}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="website" th:text="#{generic.website}"></label>
+            <div class="col-8">
+                <input class="form-control" id="website" th:field="*{company.website}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="street" th:text="#{generic.street}"></label>
+            <div class="col-8">
+                <input class="form-control" id="street" th:field="*{company.street}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="house_number" th:text="#{generic.house_number}"></label>
+            <div class="col-8">
+                <input class="form-control" type="number" id="house_number" th:field="*{company.houseNumber}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="house_number_addition"
+                   th:text="#{generic.house_number_addition}"></label>
+            <div class="col-8">
+                <input class="form-control" id="house_number_addition" th:field="*{company.houseNumberAddition}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="postal_code" th:text="#{generic.postal_code}"></label>
+            <div class="col-8">
+                <input class="form-control" id="postal_code" th:field="*{company.postalCode}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="city" th:text="#{generic.city}"></label>
+            <div class="col-8">
+                <input class="form-control" id="city" th:field="*{company.city}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="comments" th:text="#{generic.comments}"></label>
+            <div class="col-8">
+                <textarea class="form-control" id="comments"
+                          rows="6" th:field="*{company.comments}"></textarea>
+            </div>
+        </div>
+        <div class="row mt-5 mb-3">
+            <div class="col-6 text-center">
+                <button type="reset" class="btn btn-outline-primary" th:text="#{button.reset}"></button>
+            </div>
+            <div class="col-6 text-center">
+                <button type="submit" class="btn btn-primary" th:text="#{button.save}"></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

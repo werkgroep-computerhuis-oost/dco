@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="search" class="modal fade" id="searchPerson" tabindex="-1" aria-labelledby="searchPersonLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="searchPersonLabel">Zoek Persoon</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-2">
+                    <div class="col-5 d-grid gap-2">
+                        <input type="text" class="form-control" placeholder="Voornaam" aria-label="Voornaam"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-5 d-grid gap-2">
+                        <input type="text" class="form-control" placeholder="Achternaam" aria-label="Achternaam"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-2 d-grid gap-2">
+                        <button type="button" class="btn btn-primary">Zoeken</button>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Apparatuur', 'equipment')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Apparatuur</li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="${id}"></li>
+</ol>
+
+<div th:fragment="content" th:object="${equipmentView}">
+    <form>
+        <h1>Details van equipment</h1>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label">Eigenaar</label>
+            <div class="col-8 col-form-label">
+                <a th:if="*{owner}" th:href="@{'/persoon/'+*{owner.id}}" th:text="*{owner.fullname}"></a>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="type">Categorie</label>
+            <div class="col-8">
+                <select id="type" class="form-select" th:field="*{equipment.category}">
+                    <option
+                        th:each="equipmentType : ${T(com.github.computerhuis.dco.enumeration.EquipmentCategoryType).values()}"
+                        th:text="${equipmentType.getLabel()}"
+                        th:value="${equipmentType}">
+
+                </select>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="id">Identificatie nummer</label>
+            <div class="col-8">
+                <input class="form-control" id="id" disabled th:value="*{equipment.id}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="checkIn">Inschrijf datum</label>
+            <div class="col-8">
+                <input class="form-control" id="checkIn" type="datetime-local" disabled
+                       th:value="*{equipment.registered}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="manufacturer">Fabrikant</label>
+            <div class="col-8">
+                <input class="form-control" id="manufacturer" th:field="*{equipment.manufacturer}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="model">Model</label>
+            <div class="col-8">
+                <input class="form-control" id="model" th:field="*{equipment.model}">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="uitboek_datum">Uitgeschreven datum</label>
+            <div class="col-8">
+                <input class="form-control" id="uitboek_datum" type="datetime-local"
+                       th:field="*{equipment.unregistered}">
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <label class="col-4 col-form-label" for="specificatie">Specificatie</label>
+            <div class="col-8">
+                <textarea class="form-control" id="specificatie"
+                          rows="6" th:field="*{equipment.specification}"></textarea>
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-3">
+            <div class="col-6 text-center">
+                <button type="reset" class="btn btn-outline-primary">Beginwaarden</button>
+            </div>
+            <div class="col-6 text-center">
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

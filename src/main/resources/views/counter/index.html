@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('Balie', 'counter')}"
+      lang="nl">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">Balie</li>
+    <li class="breadcrumb-item active" aria-current="page">Overzicht</li>
+</ol>
+
+<div th:fragment="content" th:object="${counterModel}">
+    <form method="get">
+        <div class="row">
+            <div class="col-5">
+                <a class="btn btn-primary" aria-current="page" th:href="@{/balie/aanmelden}">Aanmelden</a>
+            </div>
+            <div class="col-4"></div>
+            <?php if (security_has_role('ADMIN')) { ?>
+            <div class="col-2">
+                <input name="datum" class="form-control" type="date" th:value="*{datum}">
+            </div>
+            <div class="col-1">
+                <button class="btn btn-outline-primary" type="submit">Zoeken</button>
+            </div>
+            <?php } ?>
+        </div>
+    </form>
+
+    <form class="mt-3" method="post" th:action="@{/balie}">
+        <input name="datum" type="hidden" value="<?php echo $datum ?>">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Persoon</th>
+                <th scope="col">Activiteit</th>
+                <th scope="col">Datum</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="*{timesheet.isEmpty()}">
+                <td colspan="5">Geen activiteiten gevonden</td>
+            </tr>
+            <tr th:each="row : *{timesheet}">
+                <td th:text="${row.fullname}"></td>
+                <td th:text="${row.activityName}"></td>
+                <td th:text="${#temporals.format(row.registered, 'dd-MM-yyyy')}"></td>
+                <td>
+                    <a th:href="@{'/persoon/' + ${row.personId}}"
+                       class="btn btn-primary"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       title="Bekijk hier de gegevens van de persoon">
+                        <i class="bi bi-info-circle"></i>
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            th:data-bs-target="${'#balie-verwijder-'+row.personId}"
+                            title="Verwijder deze activiteit">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <div class="modal fade" th:id="${'#balie-verwijder-'+row.personId}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">
+                                        Weet u zeker dat u de actieviteit "<span th:remove="tag"
+                                                                                 th:text="${row.fullname}"></span>" voor
+                                        "<span th:remove="tag" th:text="${row.fullname}"></span>" wilt verwijderen?
+                                    </h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Nee
+                                    </button>
+                                    <button type="submit"
+                                            class="btn btn-primary"
+                                            name="balie-verwijder"
+                                            th:value=" ${row.personId}">
+                                        Ja
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

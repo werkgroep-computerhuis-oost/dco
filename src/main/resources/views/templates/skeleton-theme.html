@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="page(title, page)">
+
+<head th:replace="~{/templates/skeleton :: head(${title})}"></head>
+<body class="d-flex flex-column min-vh-100">
+<header th:replace="~{/templates/skeleton :: header}"></header>
+<div th:replace="~{/templates/skeleton-menu :: navbar(${page})}"></div>
+
+<main class="container-fluid mt-3 mb-4">
+
+    <nav aria-label="breadcrumb">
+        <div th:replace="~{this :: breadcrumb}"></div>
+    </nav>
+    <div class="bg-light p-4">
+        <div th:replace="~{this :: content}"></div>
+    </div>
+</main>
+
+<footer th:replace="~{/templates/skeleton :: footer}"></footer>
+<div th:replace="~{this :: scripts}"></div>
+</body>
+</html>
