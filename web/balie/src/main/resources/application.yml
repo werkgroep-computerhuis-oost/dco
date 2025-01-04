@@ -1,0 +1,6 @@
+#  https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+spring:
+  profiles:
+    active: balie
+  config:
+    import: classpath:default.yml

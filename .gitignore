@@ -15,6 +15,3 @@ pom.xml.versionsBackup
 *.info
 tree.txt
 analyze.txt
-
-# Project
-config/
