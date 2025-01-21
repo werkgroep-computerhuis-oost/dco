@@ -46,15 +46,14 @@
             </div>
 
             <div class="grid ui-fluid">
-                <p:importEnum type="com.github.computerhuis.dco.enumeration.EquipmentCategoryType"
-                              var="equipmentCategoryType"/>
-
                 <p:outputLabel for="category" value="Categorie:" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
                 <div class="col-12 md:col-10">
-                    <p:selectOneMenu id="category" disabled="true" value="#{equipmentCrudBean.equipment.category}">
-                        <ui:repeat var="currentEnum" value="#{equipmentCategoryType}">
-                            <f:selectItems value="#{currentEnum}"/>
-                        </ui:repeat>
+                    <p:importEnum type="com.github.computerhuis.dco.enumeration.EquipmentCategoryType"/>
+                    <p:selectOneMenu id="category" value="#{equipmentCrudBean.category}">
+                        <f:selectItems value="#{EquipmentCategoryType.ALL_VALUES}"
+                                       itemLabel="#{element.label}"
+                                       itemValue="#{element}"
+                                       var="element"/>
                     </p:selectOneMenu>
                 </div>
             </div>
