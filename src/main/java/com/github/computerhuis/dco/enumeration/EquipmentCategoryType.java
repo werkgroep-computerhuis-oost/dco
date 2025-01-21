@@ -1,11 +1,17 @@
 package com.github.computerhuis.dco.enumeration;
 
-import com.github.computerhuis.dco.config.MessageSourceBundles;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@Getter
 public enum EquipmentCategoryType {
-    DESKTOP, LAPTOP, TABLET, MOBILE, SIM, USB_STICK;
+    DESKTOP("Desktop"),
+    LAPTOP("Laptop"),
+    TABLET("Tablet"),
+    MOBILE("Mobiel"),
+    SIM("Simkaart"),
+    USB_STICK("USB Stick");
 
-    public String getLabel() {
-        return MessageSourceBundles.getLabel("enumeration.equipment.category." + name().toLowerCase());
-    }
+    private final String label;
 }

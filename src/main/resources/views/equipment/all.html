@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:insert="~{/templates/skeleton-theme :: page('Apparatuur','equipment')}"
+      th:insert="~{/templates/skeleton-list :: page('Apparatuur','equipment')}"
+      th:object="${equipmentViewList}"
       lang="nl">
 <body>
 
@@ -22,12 +23,24 @@
         </tr>
         </thead>
         <tbody>
+        <tr th:each="equipment : ${equipmentViewList.data}">
+            <td>
+                <a class="link-opacity-25-hover" th:href="@{'/apparatuur/'+${equipment.id}}"
+                   th:text="${equipment.id}"></a>
+            </td>
+            <td th:text="${equipment.category.label}"></td>
+            <td th:text="${equipment.manufacturer}"></td>
+            <td th:text="${equipment.model}"></td>
+
+            <td th:text="${#temporals.format(equipment.registered, 'd MMM yyyy')}"></td>
+            <td th:text="${#temporals.format(equipment.unregistered, 'd MMM yyyy')}"></td>
+        </tr>
         </tbody>
     </table>
+
 </div>
 
 <div th:fragment="scripts">
-    <script type="text/javascript" th:src="@{/assets/js/equipment/all.js}"></script>
 </div>
 
 </body>

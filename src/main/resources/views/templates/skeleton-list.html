@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="page(title, page)">
+
+<head th:replace="~{/templates/skeleton :: head(${title})}"></head>
+<body class="d-flex flex-column min-vh-100">
+<header th:replace="~{/templates/skeleton :: header}"></header>
+<div th:replace="~{/templates/skeleton-menu :: navbar(${page})}"></div>
+
+<main class="container-fluid mt-3 mb-4">
+
+    <nav aria-label="breadcrumb">
+        <div th:replace="~{this :: breadcrumb}"></div>
+    </nav>
+    <div class="bg-light p-4">
+        <div class="row mt-3">
+            <div class="col-6">
+                <nav aria-label="Number of spots per page">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{pageSize==25 ? 'disabled': null}"
+                               th:data-href="*{getPageSizeUrl(25)}">25</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{pageSize==50 ? 'disabled': null}"
+                               th:data-href="*{getPageSizeUrl(50)}">50</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{pageSize==75 ? 'disabled': null}"
+                               th:data-href="*{getPageSizeUrl(75)}">75</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{pageSize==100 ? 'disabled': null}"
+                               th:data-href="*{getPageSizeUrl(100)}">100</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{pageSize==150 ? 'disabled': null}"
+                               th:data-href="*{getPageSizeUrl(150)}">150</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{pageSize==250 ? 'disabled': null}"
+                               th:data-href="*{getPageSizeUrl(250)}">250</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-6">
+                <nav aria-label="Page number">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{previousPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(0)}">&larrb;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{previousPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(previousPageNumber)}">&larr;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link disabled" href="#"
+                               th:text="*{currentPageNumber + 1}"></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{nextPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(nextPageNumber)}">&rarr;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{nextPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(totalPages)}">&rarrb;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div th:replace="~{this :: content}"></div>
+
+
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <nav aria-label="Page number">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{previousPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(0)}">&larrb;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{previousPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(previousPageNumber)}">&larr;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link disabled" href="#"
+                               th:text="*{currentPageNumber + 1}"></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{nextPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(nextPageNumber)}">&rarr;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link clickable"
+                               th:classappend="*{nextPageNumber==null ? 'disabled': null}"
+                               th:data-href="*{getPageUrl(totalPages)}">&rarrb;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{/templates/skeleton :: footer}"></footer>
+<div th:replace="~{this :: scripts}"></div>
+</body>
+</html>

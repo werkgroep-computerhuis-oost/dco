@@ -1,11 +1,13 @@
 package com.github.computerhuis.dco.enumeration;
 
-import com.github.computerhuis.dco.config.MessageSourceBundles;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@Getter
 public enum TicketType {
-    REPAIR, ISSUE;
+    REPAIR("Reparatie"),
+    ISSUE("Uitgifte");
 
-    public String getLabel() {
-        return MessageSourceBundles.getLabel("enumeration.ticket." + name().toLowerCase());
-    }
+    private final String label;
 }

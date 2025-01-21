@@ -1,11 +1,16 @@
 package com.github.computerhuis.dco.enumeration;
 
-import com.github.computerhuis.dco.config.MessageSourceBundles;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@Getter
 public enum TicketStatusType {
-    OPEN, IN_PROGRESS, READY, CUSTOMER_INFORMED, CLOSED;
+    OPEN("Open"),
+    IN_PROGRESS("Wordt aan gewerkt"),
+    READY("Klaar"),
+    CUSTOMER_INFORMED("Klant geïnformeerd"),
+    CLOSED("Gesloten");
 
-    public String getLabel() {
-        return MessageSourceBundles.getLabel("enumeration.ticket.status." + name().toLowerCase());
-    }
+    private final String label;
 }
