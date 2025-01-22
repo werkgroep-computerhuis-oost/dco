@@ -48,12 +48,20 @@
             <div class="grid ui-fluid">
                 <p:outputLabel for="category" value="Categorie:" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
                 <div class="col-12 md:col-10">
-                    <p:importEnum type="com.github.computerhuis.dco.enumeration.EquipmentCategoryType"/>
-                    <p:selectOneMenu id="category" value="#{equipmentCrudBean.category}">
-                        <f:selectItems value="#{EquipmentCategoryType.ALL_VALUES}"
-                                       itemLabel="#{element.label}"
-                                       itemValue="#{element}"
-                                       var="element"/>
+                    <!--                    <p:importEnum type="com.github.computerhuis.dco.enumeration.EquipmentCategoryType"/>-->
+                    <!--                    <p:selectOneMenu id="category" value="#{equipmentCrudBean.category}">-->
+                    <!--                        <f:selectItems value="#{EquipmentCategoryType.ALL_VALUES}"-->
+                    <!--                                       itemLabel="#{element.label}"-->
+                    <!--                                       itemValue="#{element}"-->
+                    <!--                                       var="element"/>-->
+                    <!--                    </p:selectOneMenu>-->
+
+
+                    <p:selectOneMenu id="category" value="#{equipmentCrudBean.equipment.category}">
+                        <f:selectItems value="#{equipmentCrudBean.equipmentCategories}"
+                                       var="cat"
+                                       itemValue="#{cat}"
+                                       itemLabel="#{cat.label}"/>
                     </p:selectOneMenu>
                 </div>
             </div>
