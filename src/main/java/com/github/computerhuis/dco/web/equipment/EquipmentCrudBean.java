@@ -18,6 +18,7 @@ import java.util.List;
 @Component
 public class EquipmentCrudBean {
 
+    private static final List<EquipmentCategoryType> EQUIPMENT_CATEGORIES = Arrays.asList(EquipmentCategoryType.values());
     private final EquipmentRepository equipmentRepository;
 
     private Equipment equipment;
@@ -33,6 +34,6 @@ public class EquipmentCrudBean {
     }
 
     public List<EquipmentCategoryType> getEquipmentCategories() {
-        return Arrays.asList(EquipmentCategoryType.values());
+        return EQUIPMENT_CATEGORIES;
     }
 }
