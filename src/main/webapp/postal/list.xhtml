@@ -28,7 +28,7 @@
                 paginatorPosition="bottom">
 
                 <p:column headerText="#" sortBy="#{postal.code}" sortOrder="desc">
-                    <p:linkButton outcome="/crud/postcode" icon="pi pi-search" styleClass="mr-1">
+                    <p:linkButton outcome="/postal/crud" icon="pi pi-search" styleClass="mr-1">
                         <f:param name="code" value="#{postal.code}"/>
                     </p:linkButton>
                     <h:outputText value="#{postal.code}"/>

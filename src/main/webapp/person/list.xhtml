@@ -11,47 +11,56 @@
 
     <ui:define name="breadcrumb">
         <p:menuitem value="Admin"/>
-        <p:menuitem value="Tijdregistratie"/>
+        <p:menuitem value="Personen"/>
     </ui:define>
+
 
     <ui:define name="content">
 
-        <h:form id="form">
+        <h:form>
             <p:dataTable
-                id="timesheetList"
-                var="timesheet"
-                value="#{timesheetListBean.list}"
+                id="personList"
+                var="person"
+                value="#{personListBean.list}"
                 rows="15"
                 paginator="true"
                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords}"
                 paginatorPosition="bottom">
 
-                <p:column headerText="Persoon" sortBy="#{timesheet.personId}" sortOrder="desc">
-                    <p:linkButton outcome="/crud/tijdregistratie" icon="pi pi-search" styleClass="mr-1">
-                        <f:param name="personId" value="#{timesheet.personId}"/>
-                        <f:param name="activityId" value="#{timesheet.activityId}"/>
+                <p:column headerText="#" sortBy="#{person.id}" sortOrder="desc">
+                    <p:linkButton outcome="/person/crud" icon="pi pi-search" styleClass="mr-1">
+                        <f:param name="id" value="#{person.id}"/>
                     </p:linkButton>
-                    <h:outputText value="#{timesheet.fullname}"/>
+                    <h:outputText value="#{person.id}"/>
                 </p:column>
-                <p:column headerText="Activiteit">
-                    <h:outputText value="#{timesheet.activityId}"/>
+                <p:column headerText="Voorletters">
+                    <h:outputText value="#{person.initials}"/>
+                </p:column>
+                <p:column headerText="Tussenvoegsels">
+                    <h:outputText value="#{person.infix}"/>
+                </p:column>
+                <p:column headerText="Achternaam">
+                    <h:outputText value="#{person.lastName}"/>
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputLink value="mailto:#{person.email}">
+                        <h:outputText value="#{person.email}"/>
+                    </h:outputLink>
                 </p:column>
                 <p:column headerText="Inschrijf datum">
-                    <h:outputText value="#{timesheet.registered != null ? timesheet.registered : ''}">
+                    <h:outputText value="#{person.registered != null ? person.registered : ''}">
                         <f:convertDateTime type="localDate"/>
                     </h:outputText>
                 </p:column>
                 <p:column headerText="Uitgeschreven datum">
-                    <h:outputText value="#{timesheet.unregistered != null ? timesheet.unregistered : ''}">
+                    <h:outputText value="#{person.unregistered != null ? person.unregistered : ''}">
                         <f:convertDateTime type="localDate"/>
                     </h:outputText>
                 </p:column>
             </p:dataTable>
         </h:form>
-
     </ui:define>
 
 </ui:composition>
-
 </html>

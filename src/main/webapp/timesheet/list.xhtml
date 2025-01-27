@@ -11,49 +11,47 @@
 
     <ui:define name="breadcrumb">
         <p:menuitem value="Admin"/>
-        <p:menuitem value="Apparatuur"/>
+        <p:menuitem value="Tijdregistratie"/>
     </ui:define>
 
     <ui:define name="content">
+
         <h:form id="form">
             <p:dataTable
-                id="equipmentList"
-                var="equipment"
-                value="#{equipmentListBean.list}"
+                id="timesheetList"
+                var="timesheet"
+                value="#{timesheetListBean.list}"
                 rows="15"
                 paginator="true"
                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords}"
                 paginatorPosition="bottom">
 
-                <p:column headerText="#" sortBy="#{equipment.id}" sortOrder="desc">
-                    <p:linkButton outcome="/crud/apparatuur" icon="pi pi-search" styleClass="mr-1">
-                        <f:param name="id" value="#{equipment.id}"/>
+                <p:column headerText="Persoon" sortBy="#{timesheet.personId}" sortOrder="desc">
+                    <p:linkButton outcome="/timesheet/crud" icon="pi pi-search" styleClass="mr-1">
+                        <f:param name="personId" value="#{timesheet.personId}"/>
+                        <f:param name="activityId" value="#{timesheet.activityId}"/>
                     </p:linkButton>
-                    <h:outputText value="#{equipment.id}"/>
+                    <h:outputText value="#{timesheet.fullname}"/>
                 </p:column>
-                <p:column headerText="Desktop">
-                    <h:outputText value="#{equipment.categoryName}"/>
-                </p:column>
-                <p:column headerText="Fabrikant">
-                    <h:outputText value="#{equipment.manufacturer}"/>
-                </p:column>
-                <p:column headerText="Model">
-                    <h:outputText value="#{equipment.model}"/>
+                <p:column headerText="Activiteit">
+                    <h:outputText value="#{timesheet.activityId}"/>
                 </p:column>
                 <p:column headerText="Inschrijf datum">
-                    <h:outputText value="#{equipment.registered != null ? equipment.registered : ''}">
+                    <h:outputText value="#{timesheet.registered != null ? timesheet.registered : ''}">
                         <f:convertDateTime type="localDate"/>
                     </h:outputText>
                 </p:column>
                 <p:column headerText="Uitgeschreven datum">
-                    <h:outputText value="#{equipment.unregistered != null ? equipment.unregistered : ''}">
+                    <h:outputText value="#{timesheet.unregistered != null ? timesheet.unregistered : ''}">
                         <f:convertDateTime type="localDate"/>
                     </h:outputText>
                 </p:column>
             </p:dataTable>
         </h:form>
+
     </ui:define>
 
 </ui:composition>
+
 </html>

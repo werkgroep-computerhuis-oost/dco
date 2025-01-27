@@ -11,50 +11,43 @@
 
     <ui:define name="breadcrumb">
         <p:menuitem value="Admin"/>
-        <p:menuitem value="Personen"/>
+        <p:menuitem value="Apparatuur"/>
     </ui:define>
 
-
     <ui:define name="content">
-
-        <h:form>
+        <h:form id="form">
             <p:dataTable
-                id="personList"
-                var="person"
-                value="#{personListBean.list}"
+                id="equipmentList"
+                var="equipment"
+                value="#{equipmentListBean.list}"
                 rows="15"
                 paginator="true"
                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords}"
                 paginatorPosition="bottom">
 
-                <p:column headerText="#" sortBy="#{person.id}" sortOrder="desc">
-                    <p:linkButton outcome="/crud/persoon" icon="pi pi-search" styleClass="mr-1">
-                        <f:param name="id" value="#{person.id}"/>
+                <p:column headerText="#" sortBy="#{equipment.id}" sortOrder="desc">
+                    <p:linkButton outcome="/equipment/crud" icon="pi pi-search" styleClass="mr-1">
+                        <f:param name="id" value="#{equipment.id}"/>
                     </p:linkButton>
-                    <h:outputText value="#{person.id}"/>
+                    <h:outputText value="#{equipment.id}"/>
                 </p:column>
-                <p:column headerText="Voorletters">
-                    <h:outputText value="#{person.initials}"/>
+                <p:column headerText="Desktop">
+                    <h:outputText value="#{equipment.categoryName}"/>
                 </p:column>
-                <p:column headerText="Tussenvoegsels">
-                    <h:outputText value="#{person.infix}"/>
+                <p:column headerText="Fabrikant">
+                    <h:outputText value="#{equipment.manufacturer}"/>
                 </p:column>
-                <p:column headerText="Achternaam">
-                    <h:outputText value="#{person.lastName}"/>
-                </p:column>
-                <p:column headerText="Email">
-                    <h:outputLink value="mailto:#{person.email}">
-                        <h:outputText value="#{person.email}"/>
-                    </h:outputLink>
+                <p:column headerText="Model">
+                    <h:outputText value="#{equipment.model}"/>
                 </p:column>
                 <p:column headerText="Inschrijf datum">
-                    <h:outputText value="#{person.registered != null ? person.registered : ''}">
+                    <h:outputText value="#{equipment.registered != null ? equipment.registered : ''}">
                         <f:convertDateTime type="localDate"/>
                     </h:outputText>
                 </p:column>
                 <p:column headerText="Uitgeschreven datum">
-                    <h:outputText value="#{person.unregistered != null ? person.unregistered : ''}">
+                    <h:outputText value="#{equipment.unregistered != null ? equipment.unregistered : ''}">
                         <f:convertDateTime type="localDate"/>
                     </h:outputText>
                 </p:column>
