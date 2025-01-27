@@ -60,19 +60,19 @@
             <div class="grid ui-fluid">
                 <p:outputLabel for="manufacturer" value="Fabrikant:" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
                 <div class="col-12 md:col-10">
-                    <p:inputText id="manufacturer" disabled="true" value="#{equipmentCrudBean.equipment.manufacturer}"/>
+                    <p:inputText id="manufacturer" value="#{equipmentCrudBean.equipment.manufacturer}"/>
                 </div>
             </div>
             <div class="grid ui-fluid">
                 <p:outputLabel for="model" value="Model:" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
                 <div class="col-12 md:col-10">
-                    <p:inputText id="model" disabled="true" value="#{equipmentCrudBean.equipment.model}"/>
+                    <p:inputText id="model" value="#{equipmentCrudBean.equipment.model}"/>
                 </div>
             </div>
             <div class="grid ui-fluid">
                 <p:outputLabel for="specification" value="Specificatie:" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
                 <div class="col-12 md:col-10">
-                    <p:inputText id="specification" disabled="true"
+                    <p:inputText id="specification"
                                  value="#{equipmentCrudBean.equipment.specification}"/>
                 </div>
             </div>
@@ -82,6 +82,19 @@
                 <div class="col-12 md:col-10">
                     <p:datePicker id="unregistered" value="#{equipmentCrudBean.equipment.unregistered}" showIcon="true"
                                   showOnFocus="false"/>
+                </div>
+            </div>
+
+            <div class="grid ui-fluid">
+                <div class="col-1">
+                </div>
+                <div class="col-2">
+                    <p:commandButton type="reset" styleClass="ui-button-raised ui-button-warning" value="Annuleren"/>
+                </div>
+                <div class="col-5">
+                </div>
+                <div class="col-2">
+                    <p:commandButton type="submit" value="Opslaan"/>
                 </div>
             </div>
         </h:form>
